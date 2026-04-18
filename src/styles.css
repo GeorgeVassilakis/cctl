@@ -96,6 +96,8 @@ a {
 }
 
 .topBar {
+  position: relative;
+  z-index: 20;
   padding-top: 22px;
 }
 
@@ -195,6 +197,71 @@ a {
 .navLinks a:hover::after,
 .navLinks a:focus-visible::after {
   transform: scaleX(1);
+}
+
+.mobileMenuButton,
+.mobileMenuPanel {
+  display: none;
+}
+
+.mobileMenuButton {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileMenuButton span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  transition:
+    transform 240ms ease,
+    opacity 240ms ease;
+}
+
+.mobileMenuButton.isOpen span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+
+.mobileMenuButton.isOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobileMenuButton.isOpen span:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+.mobileMenuPanel {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #0f0f0f;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+  transform-origin: top right;
+  pointer-events: none;
+  isolation: isolate;
+  transition:
+    opacity 220ms ease,
+    transform 260ms ease;
+}
+
+.mobileMenuPanel a {
+  display: block;
+  padding: 14px 18px;
+  color: var(--ink);
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mobileMenuPanel a + a {
+  border-top: 1px solid var(--line);
 }
 
 .marqueeBand {
@@ -851,12 +918,44 @@ a {
 @media (max-width: 960px) {
   .navPill {
     border-radius: 30px;
+    align-items: flex-start;
   }
 
   .navPill,
   .navBrand,
   .navLinks {
     flex-wrap: wrap;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 46px;
+    height: 46px;
+    margin-left: auto;
+    border-radius: 999px;
+    flex: 0 0 auto;
+  }
+
+  .mobileMenuPanel {
+    display: block;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(15rem, calc(100% - 120px));
+    overflow: hidden;
+    z-index: 15;
+  }
+
+  .mobileMenuPanel.isOpen {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
   }
 
   .bentoGrid {
@@ -899,8 +998,22 @@ a {
     padding: 0 16px 48px;
   }
 
-  .navLinks {
+  .navPill {
+    padding: 14px 14px 14px 14px;
     gap: 14px;
+  }
+
+  .navBrand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .navTitle {
+    font-size: 0.9rem;
+  }
+
+  .navSubtitle {
+    font-size: 0.7rem;
   }
 
   .heroSection {

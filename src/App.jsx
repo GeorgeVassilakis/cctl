@@ -122,6 +122,7 @@ function WordReveal({ text }) {
 
 function App() {
   const [activeIssue, setActiveIssue] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const rootRef = useRef(null);
   const heroRef = useRef(null);
   const revealRef = useRef(null);
@@ -230,7 +231,42 @@ function App() {
             <a href="#work">Themes</a>
             <a href="#join">Structure</a>
           </div>
+          <button
+            type="button"
+            className={`mobileMenuButton ${mobileMenuOpen ? "isOpen" : ""}`}
+            aria-label="Toggle navigation"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-section-nav"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </nav>
+        <div
+          id="mobile-section-nav"
+          className={`mobileMenuPanel ${mobileMenuOpen ? "isOpen" : ""}`}
+        >
+          <a
+            href="#mission"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Mission
+          </a>
+          <a
+            href="#work"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Themes
+          </a>
+          <a
+            href="#join"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Structure
+          </a>
+        </div>
       </header>
 
       <section className="marqueeBand">
