@@ -1,0 +1,994 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,600&family=Oswald:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap");
+
+:root {
+  color-scheme: dark;
+  font-family: "Outfit", sans-serif;
+  --bg: #090909;
+  --bg-soft: #121212;
+  --ink: #f5f1ea;
+  --ink-dim: rgba(245, 241, 234, 0.72);
+  --line: rgba(245, 241, 234, 0.14);
+  --tone-red: #5b5b5b;
+  --tone-red-soft: #171717;
+  --tone-paper: #f1eadf;
+  --tone-ink-soft: #1f2022;
+  --tone-blush: #d9d2c4;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(242, 220, 227, 0.12), transparent 22%),
+    radial-gradient(circle at 88% 10%, rgba(242, 220, 227, 0.1), transparent 18%),
+    linear-gradient(180deg, #060606 0%, #0a0a0a 48%, #060606 100%);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.siteShell {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 24px 64px;
+}
+
+.ambient {
+  position: fixed;
+  inset: auto;
+  width: 32rem;
+  height: 32rem;
+  border-radius: 999px;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.ambientLeft {
+  top: -8rem;
+  left: -10rem;
+  background: rgba(242, 220, 227, 0.1);
+}
+
+.ambientRight {
+  top: 22rem;
+  right: -8rem;
+  background: rgba(242, 220, 227, 0.1);
+}
+
+.topBar,
+.marqueeBand,
+.heroSection,
+.missionSection,
+.bentoSection,
+.accordionSection,
+.pinSection,
+.ctaSection {
+  position: relative;
+  z-index: 1;
+  width: min(1380px, 100%);
+  margin: 0 auto;
+}
+
+.topBar {
+  padding-top: 22px;
+}
+
+.navPill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 18px 14px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.navLogoBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  flex: 0 0 auto;
+}
+
+.navLogoBadge img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.navWhisper,
+.heroIntro span,
+.heroIntro em {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+.navWhisper {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--ink-dim);
+}
+
+.navTitle {
+  margin: 2px 0 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.navSubtitle {
+  margin: 4px 0 0;
+  color: var(--ink-dim);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--ink-dim);
+}
+
+.navLinks a {
+  position: relative;
+  font-size: 0.98rem;
+}
+
+.navLinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms ease;
+}
+
+.navLinks a:hover::after,
+.navLinks a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.marqueeBand {
+  overflow: hidden;
+  padding: 28px 0 18px;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+
+.marqueeGroup {
+  display: flex;
+  gap: 18px;
+  padding-right: 18px;
+}
+
+.marqueeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.marqueeItem img {
+  width: 26px;
+  height: 26px;
+}
+
+.heroSection {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
+  gap: clamp(32px, 4vw, 72px);
+  align-items: center;
+  min-height: 88vh;
+  padding: clamp(72px, 10vw, 140px) 0 clamp(100px, 12vw, 170px);
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 17rem;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(242, 220, 227, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(242, 220, 227, 0.1), rgba(242, 220, 227, 0));
+  filter: blur(26px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroCopy,
+.heroArt {
+  position: relative;
+  z-index: 1;
+}
+
+.heroCopy {
+  max-width: min(92vw, 1150px);
+}
+
+.heroIntro {
+  margin: 0 0 20px;
+  color: var(--ink-dim);
+  font-size: clamp(1.2rem, 1.8vw, 2rem);
+  line-height: 1.1;
+}
+
+.heroIntro strong {
+  font-style: normal;
+}
+
+.heroTitleWrap {
+  max-width: min(92vw, 1150px);
+}
+
+.heroTitle {
+  max-width: 23ch;
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(3.4rem, 8vw, 8.75rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.heroLead {
+  max-width: 38rem;
+  margin: 28px 0 0;
+  color: var(--ink-dim);
+  font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+  line-height: 1.65;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.buttonPrimary,
+.buttonGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+.buttonPrimary {
+  color: #090909;
+  background: var(--tone-paper);
+}
+
+.buttonGhost {
+  color: var(--ink);
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.buttonPrimary:hover,
+.buttonGhost:hover,
+.buttonPrimary:focus-visible,
+.buttonGhost:focus-visible {
+  transform: translateY(-2px);
+}
+
+.heroArt {
+  position: relative;
+  min-height: 44rem;
+}
+
+.heroPoster {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.heroPosterPrimary {
+  inset: 0 7% auto 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(5, 5, 5, 0.88));
+  border-radius: 34px;
+}
+
+.posterHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.posterHeader span,
+.posterHeader em {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.5rem, 1.6vw, 2rem);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.posterStatement {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  min-height: 39rem;
+  padding: 28px 24px 24px;
+}
+
+.posterQuestion {
+  max-width: 12ch;
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 5.4vw, 5.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+}
+
+.posterMeta {
+  display: grid;
+  gap: 14px;
+}
+
+.posterMeta > div {
+  padding: 18px 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.posterMeta h3 {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.08;
+}
+
+.heroPosterAccent {
+  right: 1.25rem;
+  top: 6.25rem;
+  width: min(15.5rem, 25vw);
+  padding: 16px 16px 14px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(241, 234, 223, 0.96), rgba(228, 219, 204, 0.96));
+  color: #111;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.22);
+  transform: rotate(-2deg);
+  z-index: 2;
+}
+
+.posterKicker,
+.eyebrow,
+.cardKicker {
+  margin: 0 0 12px;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.84rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.affiliationNote {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(0.98rem, 1.18vw, 1.18rem);
+  line-height: 1.18;
+}
+
+.affiliationNote strong {
+  font-weight: 700;
+}
+
+.missionSection,
+.bentoSection,
+.accordionSection,
+.pinSection,
+.ctaSection {
+  padding: clamp(120px, 14vw, 210px) 0;
+}
+
+.sectionHeading {
+  max-width: 70rem;
+}
+
+.sectionHeadingSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 26rem);
+  gap: 32px;
+  align-items: end;
+}
+
+.eyebrow,
+.cardKicker {
+  color: #b8a58a;
+}
+
+.sectionHeading h2,
+.pinLabel h2,
+.ctaPanel h2 {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2.7rem, 5vw, 5.4rem);
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.sectionAside,
+.pinLabel p,
+.ctaPanel p {
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.revealText {
+  max-width: min(88vw, 1120px);
+  margin: 42px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 4.2vw, 4.85rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.revealWord {
+  display: inline-block;
+  will-change: opacity;
+}
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 18px;
+  margin-top: 44px;
+}
+
+.bentoCard {
+  position: relative;
+  overflow: hidden;
+  min-height: 13rem;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: var(--shadow);
+}
+
+.bentoCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 28%, rgba(0, 0, 0, 0.08));
+}
+
+.bentoManifesto {
+  grid-column: span 3;
+  grid-row: span 2;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.09), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+}
+
+.bentoManifesto h3,
+.bentoTopics h3,
+.bentoStrip h3,
+.issuePanelContent h3,
+.pinCard h3,
+.ctaPanel h2 {
+  text-wrap: balance;
+}
+
+.bentoManifesto h3 {
+  max-width: 11ch;
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.bentoManifesto p:last-child {
+  max-width: 30rem;
+  margin: 24px 0 0;
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.bentoVisual {
+  grid-column: span 2;
+  grid-row: span 2;
+  background:
+    radial-gradient(circle at top left, rgba(241, 234, 223, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(20, 20, 20, 0.96), rgba(11, 11, 11, 0.96));
+}
+
+.visualCaption {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+  height: 100%;
+}
+
+.visualCaption h3 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.98;
+}
+
+.visualCaption p:last-child {
+  max-width: 22rem;
+  margin: 0;
+  color: var(--ink-dim);
+  line-height: 1.7;
+}
+
+.bentoSchedule {
+  grid-column: span 2;
+  background: var(--tone-paper);
+  color: #090909;
+}
+
+.bentoSchedule h3 {
+  max-width: 9ch;
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: clamp(2.2rem, 3.6vw, 4rem);
+  line-height: 0.94;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.bentoTopics {
+  grid-column: span 3;
+  background: rgba(17, 17, 17, 0.95);
+}
+
+.topicsList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.topicsList h3 {
+  margin: 0 0 10px;
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.7rem;
+  line-height: 1.05;
+}
+
+.topicsList p:last-child {
+  margin: 0;
+  color: var(--ink-dim);
+  line-height: 1.65;
+}
+
+.bentoStrip {
+  grid-column: 1 / -1;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.03);
+}
+
+.stripHeading h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2.2rem, 4.4vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.inlineLogo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 106px;
+  height: 64px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.inlineLogo img {
+  width: 54px;
+}
+
+.accordionRow {
+  display: flex;
+  gap: 16px;
+  margin-top: 44px;
+  min-height: 38rem;
+}
+
+.issuePanel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  overflow: hidden;
+  text-align: left;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(26, 26, 26, 0.96), rgba(10, 10, 10, 0.96));
+  transition:
+    flex 650ms cubic-bezier(0.2, 1, 0.2, 1),
+    transform 650ms ease;
+  cursor: pointer;
+}
+
+.issuePanel.isActive {
+  flex: 2.2 1 0;
+}
+
+.issuePanelOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.issuePanelOverlay {
+  background:
+    linear-gradient(180deg, rgba(12, 12, 12, 0.05), rgba(12, 12, 12, 0.2)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02), transparent 40%);
+}
+
+.issuePanelContent {
+  position: absolute;
+  inset: auto 20px 18px;
+  transform: translateY(18px);
+  opacity: 0.78;
+  transition:
+    transform 500ms ease,
+    opacity 500ms ease;
+}
+
+.issuePanelContent h3 {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 0.96;
+}
+
+.issuePanelContent p:last-child {
+  max-width: 26rem;
+  margin: 14px 0 0;
+  color: var(--ink-dim);
+  line-height: 1.65;
+}
+
+.issuePanel.isActive .issuePanelContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.pinSection {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1.14fr);
+  gap: clamp(32px, 5vw, 86px);
+  align-items: start;
+}
+
+.pinLabel {
+  padding-top: 12px;
+}
+
+.pinLabel p:last-child {
+  max-width: 26rem;
+  margin-top: 20px;
+}
+
+.pinCards {
+  display: grid;
+  gap: 18px;
+}
+
+.pinCard {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(8, 8, 8, 0.82)),
+    var(--card-accent, rgba(255, 255, 255, 0.04));
+  min-height: 18rem;
+  box-shadow: var(--shadow);
+}
+
+.pinCard h3 {
+  max-width: 12ch;
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 0.96;
+}
+
+.pinCard p:last-child {
+  max-width: 32rem;
+  margin: 18px 0 0;
+  color: var(--ink-dim);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.ctaPanel {
+  padding: clamp(34px, 5vw, 62px);
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.08), transparent 35%),
+    linear-gradient(135deg, rgba(239, 227, 208, 0.14), rgba(10, 10, 10, 0.94));
+  box-shadow: var(--shadow);
+}
+
+.ctaPanel h2 {
+  max-width: 13ch;
+}
+
+.ctaPanel p {
+  max-width: 42rem;
+  margin-top: 20px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1120px) {
+  .heroSection,
+  .sectionHeadingSplit,
+  .pinSection {
+    grid-template-columns: 1fr;
+  }
+
+  .heroArt {
+    min-height: 40rem;
+  }
+
+  .heroPosterAccent {
+    top: 6rem;
+    right: 1rem;
+    width: min(14rem, 34vw);
+  }
+}
+
+@media (max-width: 960px) {
+  .navPill {
+    border-radius: 30px;
+  }
+
+  .navPill,
+  .navBrand,
+  .navLinks {
+    flex-wrap: wrap;
+  }
+
+  .bentoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bentoManifesto,
+  .bentoVisual,
+  .bentoTopics,
+  .bentoStrip {
+    grid-column: span 2;
+  }
+
+  .bentoSchedule {
+    grid-column: span 1;
+  }
+
+  .topicsList {
+    grid-template-columns: 1fr;
+  }
+
+  .accordionRow {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .issuePanel,
+  .issuePanel.isActive {
+    min-height: 24rem;
+    flex: none;
+  }
+
+  .pinLabel {
+    position: static !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .siteShell {
+    padding: 0 16px 48px;
+  }
+
+  .navLinks {
+    gap: 14px;
+  }
+
+  .heroSection {
+    min-height: auto;
+    padding-top: 58px;
+  }
+
+  .heroTitle {
+    max-width: 10ch;
+    font-size: clamp(2.8rem, 14vw, 4.8rem);
+    line-height: 0.92;
+  }
+
+  .heroArt {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    gap: 16px;
+  }
+
+  .heroPoster {
+    position: relative;
+  }
+
+  .heroPosterPrimary {
+    inset: auto;
+    width: 100%;
+  }
+
+  .posterStatement {
+    min-height: auto;
+    gap: 24px;
+    padding: 24px 20px 20px;
+  }
+
+  .heroPosterAccent {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    margin: 0;
+    transform: none;
+  }
+
+  .posterHeader {
+    flex-wrap: wrap;
+  }
+
+  .posterQuestion {
+    max-width: 10ch;
+    font-size: clamp(2.8rem, 12vw, 4.2rem);
+  }
+
+  .posterMeta h3 {
+    font-size: clamp(1.08rem, 5.2vw, 1.5rem);
+  }
+
+  .affiliationNote {
+    font-size: 1rem;
+  }
+
+  .revealText {
+    font-size: clamp(2.05rem, 10vw, 3.3rem);
+  }
+
+  .bentoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bentoManifesto,
+  .bentoVisual,
+  .bentoSchedule,
+  .bentoTopics,
+  .bentoStrip {
+    grid-column: auto;
+  }
+
+  .stripHeading h3 {
+    gap: 12px;
+  }
+
+  .inlineLogo {
+    width: 82px;
+    height: 52px;
+  }
+
+  .buttonPrimary,
+  .buttonGhost {
+    width: 100%;
+  }
+}
